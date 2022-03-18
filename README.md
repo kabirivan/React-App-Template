@@ -20,6 +20,7 @@ The Redux Toolkit package is intended to be the standard way to write Redux logi
 - "I have to add a lot of packages to get Redux to do anything useful"
 - "Redux requires too much boilerplate code"
 
+`yarn add react-redux`
 `yarn add @reduxjs/toolkit`
 
 
