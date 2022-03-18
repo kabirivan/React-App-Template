@@ -4,9 +4,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ## Installation
-#### To start a new Create React App project with TypeScript, you can run:
+### To start a new Create React App project with TypeScript, you can run:
 
 `yarn create react-app my-app --template typescript`
+
+### The official Redux+TS template for Create React App.
+
+`yarn create react-app my-app --template redux-typescript`
+
+### Add Redux 
+
+The Redux Toolkit package is intended to be the standard way to write Redux logic. It was originally created to help address three common concerns about Redux:
+
+- "Configuring a Redux store is too complicated"
+- "I have to add a lot of packages to get Redux to do anything useful"
+- "Redux requires too much boilerplate code"
+
+`yarn add @reduxjs/toolkit`
+
+
 
 ## Available Scripts
 
