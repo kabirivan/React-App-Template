@@ -11,15 +11,14 @@ const initialState: CounterState = {
   value: 0,
 }
 
-export const counterSlice = createSlice({
+export const slice = createSlice({
   name: 'counter',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    increment: (state) => {
+    increment: (state: CounterState) => {
       state.value += 1
     },
-    decrement: (state) => {
+    decrement: (state: CounterState) => {
       state.value -= 1
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
@@ -29,9 +28,11 @@ export const counterSlice = createSlice({
   },
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { reducer } = slice;
+
+export const { increment, decrement, incrementByAmount } = slice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.counter.value
 
-export default counterSlice.reducer
+export default slice;
