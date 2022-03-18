@@ -1,8 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useSelector } from 'src/redux/store';
+import { decrement, increment } from 'src/redux/slices/counter'
 
 function App() {
+  const count = useSelector((state) => state.counter.value)
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +20,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {count}
         </a>
       </header>
     </div>
