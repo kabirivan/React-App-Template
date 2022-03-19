@@ -4,6 +4,7 @@ import type { Action } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux';
 import rootReducer from './rootReducer';
+import thunk from 'redux-thunk';
 
 import storage from 'redux-persist/lib/storage';
 import {
@@ -37,7 +38,9 @@ export const store = configureStore({
       serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-  }),
+  }).concat(
+    thunk
+  ),
 })
 
 export const persistor = persistStore(store);
