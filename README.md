@@ -23,6 +23,11 @@ The Redux Toolkit package is intended to be the standard way to write Redux logi
 `yarn add react-redux`
 `yarn add @reduxjs/toolkit`
 
+### Add MUI
+
+Install MUI, the world's most popular React UI framework.
+
+`yarn add @mui/material @emotion/react @emotion/styled`
 
 
 ## Available Scripts

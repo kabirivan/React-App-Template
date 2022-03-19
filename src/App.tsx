@@ -1,11 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useSelector } from 'src/redux/store';
-import { decrement, increment } from 'src/redux/slices/counter'
+import { useSelector, useDispatch } from 'src/redux/store';
+import FourKIcon from '@mui/icons-material/FourK';
+import { Button, Box } from '@mui/material';
+import { incrementAction, decrementAction, incrementByAmountAction } from 'src/redux/slices/counter'
 
 function App() {
   const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
@@ -22,6 +25,13 @@ function App() {
         >
           {count}
         </a>
+        <FourKIcon />
+        <Box sx={{ mt: 2 }} />
+        <Button variant="contained" onClick={() => dispatch(incrementAction())}>Aumentar</Button>
+        <Box sx={{ mt: 2 }} />
+        <Button variant="contained" onClick={() => dispatch(decrementAction())}>Disminuir</Button>
+        <Box sx={{ mt: 2 }} />
+        <Button variant="contained" onClick={() => dispatch(incrementByAmountAction(2))}>Sumar 2</Button>
       </header>
     </div>
   );

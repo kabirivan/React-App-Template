@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { AppThunk } from 'src/redux/store';
 
 // Define a type for the slice state
 interface CounterState {
@@ -21,7 +22,7 @@ export const slice = createSlice({
       state.value -= 1
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
+    incrementByAmount: (state: CounterState, action: PayloadAction<number>) => {
       state.value += action.payload
     },
   },
@@ -29,6 +30,16 @@ export const slice = createSlice({
 
 export const { reducer } = slice;
 
-export const { increment, decrement, incrementByAmount } = slice.actions
+export const incrementAction = (): AppThunk => async (dispatch) : Promise<void> => {
+    dispatch(slice.actions.increment());
+  };
+
+export const decrementAction = (): AppThunk => async (dispatch) : Promise<void> => {
+    dispatch(slice.actions.decrement());
+  };
+
+export const incrementByAmountAction = (value: number): AppThunk => async (dispatch) : Promise<void> => {
+    dispatch(slice.actions.incrementByAmount(value));
+  };
 
 export default slice;
