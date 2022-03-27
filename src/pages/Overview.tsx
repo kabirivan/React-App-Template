@@ -72,10 +72,11 @@ const Overview: FC = () => {
             <Typography
               color="textPrimary"
               variant="h4"
+              sx={{ mt: 2 }}
             >
               Llamada a API POKEMON
             </Typography>
-            <Box sx={{ my: 6 }}>
+            <Box sx={{ my: 4 }}>
               <Loader
                 isLoading={isFetching}
                 hasData={pokemons}
