@@ -30,6 +30,10 @@ Install MUI, the world's most popular React UI framework.
 `yarn add @mui/material @emotion/react @emotion/styled`
 
 
+### Add React Router
+To add React Router to an existing project, the first thing you should do is install the necessary dependencies with the tool of your choice:
+`yarn add react-router-dom@6`
+
 ## Available Scripts
 
 In the project directory, you can run:
