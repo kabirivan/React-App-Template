@@ -15,7 +15,7 @@ const Login = Loadable(lazy(() => import('src/pages/authentication/Login')));
 // Pages
 const Home = Loadable(lazy(() => import('src/pages/Home')));
 const NotFound = Loadable(lazy(() => import('src/pages/NotFound')));
-const BlogPostList = Loadable(lazy(() => import('src/pages/BlogPostList')));
+const Overview = Loadable(lazy(() => import('src/pages/Overview')));
 
 const routes: RouteObject[] = [
   {
@@ -37,7 +37,7 @@ const routes: RouteObject[] = [
     children: [
       {
         path: 'overview',
-        element: <BlogPostList />
+        element: <Overview />
       },
       {
         path: '404',

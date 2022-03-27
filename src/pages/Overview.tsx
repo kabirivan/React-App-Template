@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { FC } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -10,13 +11,23 @@ import {
 } from '@mui/material';
 import logo from 'src/logo.svg';
 import { useSelector, useDispatch } from 'src/redux/store';
-import { incrementAction, decrementAction, incrementByAmountAction } from 'src/redux/slices/counter'
+import { incrementAction, decrementAction, incrementByAmountAction } from 'src/redux/slices/counter';
 import './Styles.css';
+import { useGetPokemonListQuery } from 'src/services/pokemonService';
+import PokemonCard from 'src/components/PokemonCard';
 
-const BlogPostList: FC = () => {
-  const count = useSelector((state) => state.counter.value)
+const Overview: FC = () => {
+  const count = useSelector((state) => state.counter.value);
+  const [limit, setLimit] = useState<number>(500);
+  const [offset, setOffset] = useState<number>(2);
   const dispatch = useDispatch();
+  const { data, isLoading, error } = useGetPokemonListQuery({ limit });
+  // const { results = [] } = data;
+  // const fileteredPokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(search.toLowerCase()));
 
+  console.log('data', data)
+  console.log('isLoading', isLoading)
+  console.log('error', error)
   return (
     <>
       <Helmet>
@@ -71,7 +82,7 @@ const BlogPostList: FC = () => {
                     md={6}
                     xs={12}
                   >
-                    {post.name}
+                    <PokemonCard />
                   </Grid>
                 ))}
               </Grid>
@@ -99,4 +110,4 @@ const BlogPostList: FC = () => {
   );
 };
 
-export default BlogPostList;
+export default Overview;
