@@ -36,22 +36,6 @@ const Login: FC = () => {
           maxWidth="sm"
           sx={{ py: '80px' }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              mb: 8
-            }}
-          >
-            <RouterLink to="/">
-              <Logo
-                sx={{
-                  height: 40,
-                  width: 40
-                }}
-              />
-            </RouterLink>
-          </Box>
           <Card>
             <CardContent
               sx={{
@@ -74,13 +58,13 @@ const Login: FC = () => {
                     gutterBottom
                     variant="h4"
                   >
-                    Log in
+                    Ingreso
                   </Typography>
                   <Typography
                     color="textSecondary"
                     variant="body2"
                   >
-                    Log in on the internal platform
+                    Identifíquese por favor.
                   </Typography>
                 </div>
                 <Box
@@ -113,7 +97,7 @@ const Login: FC = () => {
                 to="/authentication/register"
                 variant="body2"
               >
-                Create new account
+                Crear una cuenta
               </Link>
               <Link
                 color="textSecondary"
@@ -122,7 +106,7 @@ const Login: FC = () => {
                 to="/authentication/password-recovery"
                 variant="body2"
               >
-                Forgot password
+                Olvidé contraseña
               </Link>
             </CardContent>
           </Card>

@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import type { RouteProps } from 'react-router';
+import type { RouteObject } from 'react-router';
 import LoadingScreen from 'src/components/LoadingScreen';
 
 const Loadable = (Component) => (props) => (
@@ -11,7 +11,7 @@ const Loadable = (Component) => (props) => (
 // Authentication pages
 const Login = Loadable(lazy(() => import('src/pages/authentication/Login')));
 
-const routes: RouteProps[] = [
+const routes: RouteObject[] = [
   {
     path: 'authentication',
     children: [
@@ -23,6 +23,5 @@ const routes: RouteProps[] = [
   }
 
 ];
-
 
 export default routes;
