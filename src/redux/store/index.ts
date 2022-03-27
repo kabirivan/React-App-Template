@@ -6,6 +6,7 @@ import { encryptTransform } from 'redux-persist-transform-encrypt';
 import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux';
 import rootReducer from './rootReducer';
 import thunk from 'redux-thunk';
+import { pokemonApi } from 'src/services/pokemonService';
 
 import storage from 'redux-persist/lib/storage';
 import {
@@ -32,7 +33,9 @@ const persistConfig = {
     version: 1,
     storage,
     transforms: [encryptor],
-    blacklist: [],
+    blacklist: [
+      pokemonApi.reducerPath,
+    ],
     whiteList: []
   };
 
@@ -48,7 +51,8 @@ export const store = configureStore({
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
   }).concat(
-    thunk
+    thunk,
+    pokemonApi.middleware
   ),
 })
 
