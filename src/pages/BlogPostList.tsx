@@ -32,18 +32,29 @@ const BlogPostList: FC = () => {
           <Container maxWidth="lg">
             <Box
               sx={{
+                display: 'flex',
                 direction: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                alignSelf: 'center'
+                mb: 3
               }}
             >
-              <img src={logo} className="App-logo" alt="logo" />
+              <Box>
+                <img src={logo} className="App-logo" alt="logo" />
+              </Box>
+              <Box>
+                <Typography
+                  color="textSecondary"
+                  variant="h5"
+                >
+                  React JS
+                </Typography>
+              </Box>
             </Box>
             <Divider />
             <Typography
               color="textPrimary"
-              variant="h3"
+              variant="h4"
             >
               Llamada a API POKEMON
             </Typography>
@@ -69,7 +80,7 @@ const BlogPostList: FC = () => {
             <Box sx={{ mt: 2 }}>
               <Typography
                 color="textPrimary"
-                variant="h3"
+                variant="h4"
               >
                 {`Estados Redux: ${count}`}
               </Typography>
