@@ -34,7 +34,7 @@ const Login: FC = () => {
       >
         <Container
           maxWidth="sm"
-          sx={{ py: '80px' }}
+          sx={{ py: '180px' }}
         >
           <Card>
             <CardContent
@@ -85,7 +85,6 @@ const Login: FC = () => {
               <Box
                 sx={{
                   flexGrow: 1,
-                  mt: 3
                 }}
               >
                 <LoginJWT />

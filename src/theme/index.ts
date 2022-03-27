@@ -146,7 +146,7 @@ const themesOptions: Record<string, ThemeOptions> = {
       mode: 'light',
       primary: {
         contrastText: '#ffffff',
-        main: '#5664d2'
+        main: '#0088CB'
       },
       success: {
         contrastText: '#ffffff',

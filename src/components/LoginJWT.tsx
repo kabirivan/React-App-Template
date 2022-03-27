@@ -78,7 +78,7 @@ const LoginJWT: FC = (props) => {
             error={Boolean(touched.email && errors.email)}
             fullWidth
             helperText={touched.email && errors.email}
-            label="Email Address"
+            label="Correo electrónico"
             margin="normal"
             name="email"
             onBlur={handleBlur}
@@ -91,7 +91,7 @@ const LoginJWT: FC = (props) => {
             error={Boolean(touched.password && errors.password)}
             fullWidth
             helperText={touched.password && errors.password}
-            label="Password"
+            label="Contraseña"
             margin="normal"
             name="password"
             onBlur={handleBlur}
@@ -116,17 +116,17 @@ const LoginJWT: FC = (props) => {
               type="submit"
               variant="contained"
             >
-              Log In
+              Ingresar
             </Button>
           </Box>
           <Box sx={{ mt: 2 }}>
             <Alert severity="info">
               <div>
-                Use
+                Usar
                 {' '}
-                <b>demo@devias.io</b>
+                <b>demo@jrtec.io</b>
                 {' '}
-                and password
+                y la contraseña
                 {' '}
                 <b>Password123!</b>
               </div>
