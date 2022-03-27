@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useSelector, useDispatch } from 'src/redux/store';
+import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from '@mui/material/styles'
 import { createCustomTheme } from 'src/theme';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Toaster position="top-center" />
     </ThemeProvider>
   );
 }

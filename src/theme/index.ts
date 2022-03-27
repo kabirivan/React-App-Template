@@ -1,8 +1,7 @@
 import merge from 'lodash/merge';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import type { Direction, Theme, ThemeOptions } from '@mui/material';
-import { colors } from '@mui/material';
-import { THEMES } from 'src/constants/';
+import { THEMES } from 'src/constants';
 
 
 interface ThemeConfig {
