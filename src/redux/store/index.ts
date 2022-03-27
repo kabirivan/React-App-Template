@@ -2,6 +2,7 @@ import type { TypedUseSelectorHook, } from 'react-redux';
 import type { ThunkAction } from 'redux-thunk';
 import type { Action } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit'
+import { encryptTransform } from 'redux-persist-transform-encrypt';
 import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux';
 import rootReducer from './rootReducer';
 import thunk from 'redux-thunk';
@@ -19,10 +20,18 @@ import {
 } from 'redux-persist';
 
 
+const encryptor = encryptTransform({
+  secretKey: process.env.REACT_APP_REDUX_SECRET_KEY,
+  onError(error) {
+    // Handle the error.
+  },
+});
+
 const persistConfig = {
     key: 'root',
     version: 1,
     storage,
+    transforms: [encryptor],
     blacklist: [],
     whiteList: []
   };
