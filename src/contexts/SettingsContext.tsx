@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import type { FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { THEMES } from 'src/constants/';
+import { THEMES } from 'src/constants';
 
 interface Settings {
   compact?: boolean;
