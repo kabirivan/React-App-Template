@@ -1,7 +1,5 @@
 import type { FC } from 'react';
 import {
-  Avatar,
-  Box,
   Card,
   CardContent,
   CardActionArea,
@@ -10,32 +8,31 @@ import {
 } from '@mui/material';
 
 interface PokemonCardProps {
-  pokemon?: any;
+  pokemon?: {
+    name: string,
+    url: string
+  };
 }
 
 const PokemonCard: FC<PokemonCardProps> = (props) => {
   const {
-    pokemon,
-    ...other
+    pokemon
   } = props;
 
   return (
     <>
-      <Card {...other}>
-        <CardActionArea>
+      <Card sx={{ maxWidth: 200, alignContent: 'center', alignItems: 'center' }}>
+        <CardActionArea sx={{alignContent: 'center', alignItems: 'center', display: 'flex', direction: 'column', p: 2}}>
           <CardMedia
             component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
+            width="80"
+            sx={{ width: 80, px: 2 }}
+            image={`https://img.pokemondb.net/artwork/${pokemon?.name}.jpg`}
+            alt="pokemon"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over 6,000
-              species, ranging across all continents except Antarctica
+            <Typography gutterBottom variant="caption" component="div">
+            {pokemon?.name}
             </Typography>
           </CardContent>
         </CardActionArea>
