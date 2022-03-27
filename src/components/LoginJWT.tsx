@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Alert,
   Box,
@@ -8,6 +9,7 @@ import {
   FormHelperText,
   TextField
 } from '@mui/material';
+import { Navigate } from 'react-router-dom';
 // import useAuth from 'src/hooks/useAuth';
 import useMounted from 'src/hooks/useMounted';
 
@@ -44,7 +46,6 @@ const LoginJWT: FC = (props) => {
       }): Promise<void> => {
         try {
           // await login(values.email, values.password);
-
           if (mounted.current) {
             setStatus({ success: true });
             setSubmitting(false);
@@ -113,8 +114,10 @@ const LoginJWT: FC = (props) => {
               disabled={isSubmitting}
               fullWidth
               size="large"
-              type="submit"
+              // type="submit"
               variant="contained"
+              component={RouterLink}
+              to="/home"
             >
               Ingresar
             </Button>

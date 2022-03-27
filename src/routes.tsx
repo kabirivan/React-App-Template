@@ -11,13 +11,20 @@ const Loadable = (Component) => (props) => (
 // Authentication pages
 const Login = Loadable(lazy(() => import('src/pages/authentication/Login')));
 
+// Pages
+const Home = Loadable(lazy(() => import('src/pages/Home')));
+
 const routes: RouteObject[] = [
   {
-    path: 'authentication',
+    path: '*',
     children: [
       {
-        path: 'login',
+        path: '',
         element: <Login />
+      },
+      {
+        path: 'home',
+        element: <Home />
       }
     ]
   }
