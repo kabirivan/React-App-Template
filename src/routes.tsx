@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import type { RouteObject } from 'react-router';
 import LoadingScreen from 'src/components/LoadingScreen';
+import MainLayout from 'src/components/MainLayout';
 
 const Loadable = (Component) => (props) => (
   <Suspense fallback={<LoadingScreen />}>
@@ -13,6 +14,8 @@ const Login = Loadable(lazy(() => import('src/pages/authentication/Login')));
 
 // Pages
 const Home = Loadable(lazy(() => import('src/pages/Home')));
+const NotFound = Loadable(lazy(() => import('src/pages/NotFound')));
+const BlogPostList = Loadable(lazy(() => import('src/pages/BlogPostList')));
 
 const routes: RouteObject[] = [
   {
@@ -26,6 +29,24 @@ const routes: RouteObject[] = [
         path: 'home',
         element: <Home />
       }
+    ]
+  },
+  {
+    path: '*',
+    element: <MainLayout />,
+    children: [
+      {
+        path: 'overview',
+        element: <BlogPostList />
+      },
+      {
+        path: '404',
+        element: <NotFound />
+      },
+      {
+        path: '*',
+        element: <NotFound />
+      },
     ]
   }
 

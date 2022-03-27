@@ -48,7 +48,7 @@ const HomeHero: FC = (props) => {
           sx={{ py: 4 }}
         >
           La siguiente forma de organización se basada en módulos, esta organización es interesante para proyectos con una escala mayor.
-          La idea principal es que cada módulo que se defina tenga todo el código relacionado con este y solo se importe código del modulo en sí. Cuando tenemos varios módulos que necesitan de la misma pieza de código esta la podemos escribir dentro de una carpeta compartida e importarla a los diferentes módulos. 
+          La idea principal es que cada módulo que se defina tenga todo el código relacionado con este y solo se importe código del modulo en sí. 
         </Typography>
         <Button
           color="primary"

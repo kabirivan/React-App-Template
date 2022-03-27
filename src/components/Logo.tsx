@@ -10,7 +10,7 @@ const Logo: FC<LogoProps> = (props) => (
   <img
     alt="Logo"
     src="/static/logo.png"
-    width="100%"
+    width="20%"
     {...props}
   />
 );
