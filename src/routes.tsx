@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import type { PartialRouteObject } from 'react-router';
+import type { RouteProps } from 'react-router';
 import LoadingScreen from 'src/components/LoadingScreen';
 
 const Loadable = (Component) => (props) => (
@@ -7,3 +7,5 @@ const Loadable = (Component) => (props) => (
     <Component {...props} />
   </Suspense>
 );
+
+const Login = Loadable(lazy(() => import('src/pages/authentication/Login')));

@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { store, persistor } from 'src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import CircularProgress from '@mui/material/CircularProgress';
+import { SettingsProvider } from './contexts/SettingsContext';
+import LoadingScreen from 'src/components/LoadingScreen';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={<CircularProgress />} persistor={persistor}>
-        <App />
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>,
+  <StrictMode>
+    <HelmetProvider>
+      <Provider store={store}>
+        <PersistGate loading={<LoadingScreen />} persistor={persistor}>
+          <SettingsProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </SettingsProvider>
+        </PersistGate>
+      </Provider>
+    </HelmetProvider>
+  </StrictMode>,
   document.getElementById('root')
 );
 
