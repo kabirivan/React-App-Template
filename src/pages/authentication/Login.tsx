@@ -10,7 +10,6 @@ import {
   Link,
   Typography
 } from '@mui/material';
-import Logo from 'src/components/Logo';
 import LoginJWT from 'src/components/LoginJWT'
 
 const platformIcons = {
