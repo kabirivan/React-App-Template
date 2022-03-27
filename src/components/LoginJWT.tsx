@@ -8,17 +8,17 @@ import {
   FormHelperText,
   TextField
 } from '@mui/material';
-import useAuth from '../../../hooks/useAuth';
-import useMounted from '../../../hooks/useMounted';
+// import useAuth from 'src/hooks/useAuth';
+import useMounted from 'src/hooks/useMounted';
 
 const LoginJWT: FC = (props) => {
   const mounted = useMounted();
-  const { login } = useAuth() as any;
+  // const { login } = useAuth() as any;
 
   return (
     <Formik
       initialValues={{
-        email: 'demo@devias.io',
+        email: 'demo@jrtec.io',
         password: 'Password123!',
         submit: null
       }}
@@ -28,13 +28,13 @@ const LoginJWT: FC = (props) => {
           .shape({
             email: Yup
               .string()
-              .email('Must be a valid email')
+              .email('Debe ser un email válido.')
               .max(255)
-              .required('Email is required'),
+              .required('El email es requerido.'),
             password: Yup
               .string()
               .max(255)
-              .required('Password is required')
+              .required('La constraseña es requerida.')
           })
       }
       onSubmit={async (values, {
@@ -43,7 +43,7 @@ const LoginJWT: FC = (props) => {
         setSubmitting
       }): Promise<void> => {
         try {
-          await login(values.email, values.password);
+          // await login(values.email, values.password);
 
           if (mounted.current) {
             setStatus({ success: true });
