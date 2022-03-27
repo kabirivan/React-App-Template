@@ -71,7 +71,7 @@ const NotFound: FC = () => {
               to="/"
               variant="outlined"
             >
-              Back to Home
+              Inicio
             </Button>
           </Box>
         </Container>
