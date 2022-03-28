@@ -10,12 +10,12 @@ import {
   TextField
 } from '@mui/material';
 import { Navigate } from 'react-router-dom';
-// import useAuth from 'src/hooks/useAuth';
+import useAuth from 'src/hooks/useAuth';
 import useMounted from 'src/hooks/useMounted';
 
 const LoginJWT: FC = (props) => {
   const mounted = useMounted();
-  // const { login } = useAuth() as any;
+  const { login } = useAuth() as any;
 
   return (
     <Formik
@@ -45,7 +45,7 @@ const LoginJWT: FC = (props) => {
         setSubmitting
       }): Promise<void> => {
         try {
-          // await login(values.email, values.password);
+          await login(values.email, values.password);
           if (mounted.current) {
             setStatus({ success: true });
             setSubmitting(false);
@@ -114,10 +114,8 @@ const LoginJWT: FC = (props) => {
               disabled={isSubmitting}
               fullWidth
               size="large"
-              // type="submit"
+              type="submit"
               variant="contained"
-              component={RouterLink}
-              to="/home"
             >
               Ingresar
             </Button>

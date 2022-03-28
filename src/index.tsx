@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { store, persistor } from 'src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { SettingsProvider } from './contexts/SettingsContext';
+import { AuthProvider } from './contexts/JWTContext';
 import LoadingScreen from 'src/components/LoadingScreen';
 
 ReactDOM.render(
@@ -18,7 +19,9 @@ ReactDOM.render(
         <PersistGate loading={<LoadingScreen />} persistor={persistor}>
           <SettingsProvider>
             <BrowserRouter>
-              <App />
+              <AuthProvider>
+                <App />
+              </AuthProvider>
             </BrowserRouter>
           </SettingsProvider>
         </PersistGate>

@@ -1,8 +1,10 @@
 import type { FC } from 'react';
 import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Box, Chip, Divider, Link, Toolbar } from '@mui/material';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { AppBar, Button, Box, Chip, Divider, Link, Toolbar } from '@mui/material';
 import Logo from './Logo';
+import useAuth from 'src/hooks/useAuth';
+import toast from 'react-hot-toast';
 
 interface MainNavbarProps {
   onSidebarMobileOpen?: () => void;
@@ -10,6 +12,18 @@ interface MainNavbarProps {
 
 const MainNavbar: FC<MainNavbarProps> = (props) => {
   const { onSidebarMobileOpen } = props;
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async (): Promise<void> => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+      toast.error('Unable to logout.');
+    }
+  };
 
   return (
     <AppBar
@@ -44,8 +58,6 @@ const MainNavbar: FC<MainNavbarProps> = (props) => {
         >
           <Link
             color="textSecondary"
-            component={RouterLink}
-            to="/browse"
             underline="none"
             variant="body1"
           >
@@ -61,6 +73,21 @@ const MainNavbar: FC<MainNavbarProps> = (props) => {
               mr: 2
             }}
           />
+           <Divider
+            orientation="vertical"
+            sx={{
+              height: 32,
+              mx: 2
+            }}
+          />
+          <Button
+            color="secondary"
+            size="small"
+            variant="contained"
+            onClick={handleLogout}
+          >
+            Salir
+          </Button>
         </Box>
       </Toolbar>
       <Divider />

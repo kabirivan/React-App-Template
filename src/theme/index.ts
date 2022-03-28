@@ -148,6 +148,10 @@ const themesOptions: Record<string, ThemeOptions> = {
         contrastText: '#ffffff',
         main: '#0088CB'
       },
+      secondary: {
+        contrastText: '#ffffff',
+        main: '#f44336'
+      },
       success: {
         contrastText: '#ffffff',
         main: '#4caf50'
