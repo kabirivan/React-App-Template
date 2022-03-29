@@ -1,6 +1,6 @@
 import { Toaster } from 'react-hot-toast';
 import { useRoutes } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles';
 import { createCustomTheme } from 'src/theme';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollReset from 'src/hooks/useScrollReset';
@@ -11,7 +11,6 @@ import routes from './routes';
 const App = () => {
   const { settings } = useSettings();
   const content = useRoutes(routes);
-  
   useScrollReset();
 
   const theme = createCustomTheme({
