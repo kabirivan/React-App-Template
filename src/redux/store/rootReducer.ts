@@ -2,10 +2,23 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { reducer as counterReducer } from 'src/redux/slices/counter';
 import { pokemonApi } from 'src/services/pokemonService';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   counter: counterReducer,
   [pokemonApi.reducerPath]: pokemonApi.reducer,
 });
 
-export default rootReducer;
+
+const rootReducer = (state, action) => {
+  if (action.type === 'RESET_APP') {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
+
+export const resetAppAction = () => dispatch => {
+  dispatch({ type: 'RESET_APP' });
+};
+
+
 export type RootReducer = ReturnType<typeof rootReducer>
+export default rootReducer;

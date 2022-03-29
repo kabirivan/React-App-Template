@@ -1,7 +1,10 @@
 import { createContext, useEffect, useReducer } from 'react';
 import type { FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { sign, decode, JWT_SECRET, JWT_EXPIRES_IN } from 'src/utils/jwt';
+import { sign, JWT_SECRET, JWT_EXPIRES_IN } from 'src/utils/jwt';
+import { resetAppAction } from 'src/redux/store/rootReducer';
+import { useDispatch } from 'src/redux/store';
+import { encryptStorage } from 'src/utils/secureStorage';
 
 interface User {
   id: string;
@@ -105,6 +108,7 @@ const AuthContext = createContext<AuthContextValue>({
 export const AuthProvider: FC<AuthProviderProps> = (props) => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
+  const dispatchRedux = useDispatch();
 
   useEffect(() => {
     const initialize = async (): Promise<void> => {
@@ -168,6 +172,9 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
 
   const logout = async (): Promise<void> => {
     localStorage.removeItem('accessToken');
+    encryptStorage.removeItem('accessToken');
+    encryptStorage.removeItem('refreshToken');
+    dispatchRedux(resetAppAction());
     dispatch({ type: 'LOGOUT' });
   };
 
