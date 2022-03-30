@@ -59,7 +59,7 @@ const userData = {
   lastName: 'Aguas',
   password: 'Password123!',
   plan: 'Premium'
-}
+};
 
 const initialState: State = {
   isAuthenticated: false,
@@ -158,7 +158,7 @@ export const AuthProvider: FC<AuthProviderProps> = (props) => {
     );
     // const user = await authApi.me(accessToken);
 
-    const user = userData
+    const user = userData;
 
     localStorage.setItem('accessToken', accessToken);
 

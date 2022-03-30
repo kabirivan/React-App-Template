@@ -6,17 +6,16 @@ const axiosBaseQuery =
   (
     { baseUrl }: { baseUrl: string } = { baseUrl: '' }
   ): BaseQueryFn<
-    {
-      url?: string;
-      method: AxiosRequestConfig['method'];
-      body?: AxiosRequestConfig['data'];
-      headers?: AxiosRequestConfig['headers'];
-      params?: AxiosRequestConfig['params'];
-    },
-    unknown,
-    unknown
-  > =>
-  async ({ url = '', method, body, headers, params }) => {
+  {
+    url?: string;
+    method: AxiosRequestConfig['method'];
+    body?: AxiosRequestConfig['data'];
+    headers?: AxiosRequestConfig['headers'];
+    params?: AxiosRequestConfig['params'];
+  },
+  unknown,
+  unknown
+  > => async ({ url = '', method, body, headers, params }) => {
     try {
       const result = await axiosNormal({
         url: baseUrl + url,
@@ -25,7 +24,7 @@ const axiosBaseQuery =
         headers,
         params,
       });
-      // console.log('result.data', result.data)
+        // console.log('result.data', result.data)
       return { data: result.data };
     } catch (axiosError) {
       console.log('axiosError', axiosError);

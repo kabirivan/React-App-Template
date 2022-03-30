@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import type { FC, ChangeEvent, MouseEvent } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -22,11 +22,11 @@ const Overview: FC = () => {
   const count = useSelector((state) => state.counter.value);
   const [limit, setLimit] = useState<number>(10);
   const [page, setPage] = useState<number>(0);
-  const [query, setQuery] = useState<string>('')
+  const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();
   const { data, isFetching } = useGetPokemonListQuery({ limit });
   const pokemons = data?.results ?? [];
-  const fileteredPokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(query.toLowerCase()));
+  const fileteredPokemons = pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(query.toLowerCase()));
 
   const handleLimitChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setLimit(parseInt(event.target.value, 10));

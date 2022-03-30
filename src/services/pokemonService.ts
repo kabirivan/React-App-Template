@@ -19,15 +19,14 @@ export interface IPokemonResponse {
   }[];
 }
 
-
 export const pokemonApi = createApi({
   baseQuery: axiosNormalQuery({ baseUrl: API_POKEMON }),
   reducerPath: 'pokemonApi',
   tagTypes: ['Pokemon'],
   endpoints: (build) => ({
     getPokemonList: build.query<IPokemonResponse, IPokemonForm>({
-      query: (form: IPokemonForm) => ({ 
-        method: 'get', 
+      query: (form: IPokemonForm) => ({
+        method: 'get',
         params: encodeQuery(form)
       }),
     }),

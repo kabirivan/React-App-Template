@@ -3,7 +3,6 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import type { Direction, Theme, ThemeOptions } from '@mui/material';
 import { THEMES } from 'src/constants';
 
-
 interface ThemeConfig {
   direction?: Direction;
   responsiveFontSizes?: boolean;
@@ -206,7 +205,6 @@ const themesOptions: Record<string, ThemeOptions> = {
     },
   }
 };
-
 
 export const createCustomTheme = (config: ThemeConfig = {}): Theme => {
   let themeOptions = themesOptions[config.theme];

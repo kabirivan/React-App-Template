@@ -7,7 +7,6 @@ const appReducer = combineReducers({
   [pokemonApi.reducerPath]: pokemonApi.reducer,
 });
 
-
 const rootReducer = (state, action) => {
   if (action.type === 'RESET_APP') {
     state = undefined;
@@ -15,10 +14,9 @@ const rootReducer = (state, action) => {
   return appReducer(state, action);
 };
 
-export const resetAppAction = () => dispatch => {
+export const resetAppAction = () => (dispatch) => {
   dispatch({ type: 'RESET_APP' });
 };
 
-
-export type RootReducer = ReturnType<typeof rootReducer>
+export type RootReducer = ReturnType<typeof rootReducer>;
 export default rootReducer;

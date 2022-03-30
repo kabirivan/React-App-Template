@@ -8,7 +8,6 @@ import {
 } from '@mui/material';
 
 const HomeHero: FC = (props) => {
-
   return (
     <Box
       sx={{
@@ -48,7 +47,7 @@ const HomeHero: FC = (props) => {
           sx={{ py: 4 }}
         >
           La siguiente forma de organización se basada en módulos, esta organización es interesante para proyectos con una escala mayor.
-          La idea principal es que cada módulo que se defina tenga todo el código relacionado con este y solo se importe código del modulo en sí. 
+          La idea principal es que cada módulo que se defina tenga todo el código relacionado con este y solo se importe código del modulo en sí.
         </Typography>
         <Button
           color="primary"
