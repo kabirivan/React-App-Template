@@ -32,6 +32,7 @@ jobs:
         with:
           cmd: build # will run `yarn build` command                
         env:
+          CI: ""
           REACT_APP_BACKEND_ENDPOINT: ${{ secrets.REACT_APP_BACKEND_ENDPOINT }}
           REACT_APP_ENCRYPT_STORAGE: ${{ secrets.REACT_APP_ENCRYPT_STORAGE }}
           REACT_APP_REDUX_SECRET_KEY: ${{ secrets.REACT_APP_REDUX_SECRET_KEY }}
