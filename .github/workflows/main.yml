@@ -1,0 +1,83 @@
+# Read more about setting it up
+# https://medium.com/@ljmocic/deploying-react-application-to-aws-s3-using-github-actions-85addacaeace
+
+name: Deploy React app
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+
+  push:
+    branches: [ main ]
+  #pull_request:
+  #  branches: [ main ]
+
+jobs:
+  build:
+    name: Build phase
+    runs-on: ubuntu-latest
+    env:      
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+      - name: Clone repository
+        id: clone-repository
+        uses: actions/checkout@main
+      - name: Install libraries
+        id: install-libraries
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command  
+      - name: Build project
+        id: build-project
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build # will run `yarn build` command                
+        env:
+          REACT_APP_BACKEND_ENDPOINT: ${{ secrets.REACT_APP_BACKEND_ENDPOINT }}
+          REACT_APP_ENCRYPT_STORAGE: ${{ secrets.REACT_APP_ENCRYPT_STORAGE }}
+          REACT_APP_REDUX_SECRET_KEY: ${{ secrets.REACT_APP_REDUX_SECRET_KEY }}
+          PORT: ${{ secrets.PORT }}          
+      # Share artifact inside workflow
+      - name: Share artifact inside workflow
+        id: share-artifacts
+        uses: actions/upload-artifact@main
+        with:
+          name: react-github-actions-build
+          path: build
+      - uses: act10ns/slack@v1
+        with: 
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#eventos'
+        if: always()          
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    env:      
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    # When application is successfully tested and build has been generated
+    # Then we can start with deployment
+    needs: build
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+      # Download previously shared build
+      - name: Get artifact  
+        id: get-artifacts
+        uses: actions/download-artifact@main
+        with:
+          name: react-github-actions-build
+          path: build
+      # Deploy to firebase
+      - name: Deploy to Firebase
+        id: deploy2firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - uses: act10ns/slack@v1
+        with: 
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#eventos'
+        if: always()           

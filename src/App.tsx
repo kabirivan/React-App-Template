@@ -7,10 +7,10 @@ import useScrollReset from 'src/hooks/useScrollReset';
 import useSettings from 'src/hooks/useSettings';
 import routes from './routes';
 
-
 const App = () => {
   const { settings } = useSettings();
   const content = useRoutes(routes);
+
   useScrollReset();
 
   const theme = createCustomTheme({

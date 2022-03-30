@@ -30,15 +30,15 @@ export const slice = createSlice({
 
 export const { reducer } = slice;
 
-export const incrementAction = (): AppThunk => async (dispatch): Promise<void> => {
+export const incrementAction = (): AppThunk => async (dispatch) : Promise<void> => {
   dispatch(slice.actions.increment());
 };
 
-export const decrementAction = (): AppThunk => async (dispatch): Promise<void> => {
+export const decrementAction = (): AppThunk => async (dispatch) : Promise<void> => {
   dispatch(slice.actions.decrement());
 };
 
-export const incrementByAmountAction = (value: number): AppThunk => async (dispatch): Promise<void> => {
+export const incrementByAmountAction = (value: number): AppThunk => async (dispatch) : Promise<void> => {
   dispatch(slice.actions.incrementByAmount(value));
 };
 

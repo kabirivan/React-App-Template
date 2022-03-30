@@ -20,7 +20,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-
 const encryptor = encryptTransform({
   secretKey: process.env.REACT_APP_REDUX_SECRET_KEY,
   onError(error) {
@@ -41,26 +40,23 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== 'production',
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }).concat(
-      thunk,
-      pokemonApi.middleware
-    ),
-})
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }).concat(
+    thunk,
+    pokemonApi.middleware
+  ),
+});
 
 export const persistor = persistStore(store);
 
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 export type AppThunk = ThunkAction<void, RootState, null, Action<string>>;
 
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;

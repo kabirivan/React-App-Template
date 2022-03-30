@@ -22,7 +22,7 @@ const PokemonCard: FC<PokemonCardProps> = (props) => {
   return (
     <>
       <Card sx={{ maxWidth: 200, alignContent: 'center', alignItems: 'center' }}>
-        <CardActionArea sx={{alignContent: 'center', alignItems: 'center', display: 'flex', direction: 'column', p: 2}}>
+        <CardActionArea sx={{ alignContent: 'center', alignItems: 'center', display: 'flex', direction: 'column', p: 2 }}>
           <CardMedia
             component="img"
             width="80"
@@ -40,6 +40,5 @@ const PokemonCard: FC<PokemonCardProps> = (props) => {
     </>
   );
 };
-
 
 export default PokemonCard;

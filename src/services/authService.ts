@@ -5,17 +5,16 @@ import { ILoginForm } from 'src/types/auth';
 const API_AUTH = '/api/v1/';
 
 export interface ILoginResponse {
-    message: string;
-    status: string;
-    meta: any;
-    data: {
-      accessToken: string;
-      tokenType: string;
-      refreshToken: string;
-      user: any;
-    }
+  message: string;
+  status: string;
+  meta: any;
+  data: {
+    accessToken: string;
+    tokenType: string;
+    refreshToken: string;
+    user: any;
   }
-  
+}
 
 export const loginApi = createApi({
   baseQuery: axiosNormalQuery({ baseUrl: API_AUTH }),
@@ -32,8 +31,6 @@ export const loginApi = createApi({
   }),
 });
 
-
-
 export const {
-    useLoginWithEmailAndPasswordMutation
-} = loginApi
+  useLoginWithEmailAndPasswordMutation
+} = loginApi;

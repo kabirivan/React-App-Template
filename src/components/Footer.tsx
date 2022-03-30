@@ -45,7 +45,7 @@ const Footer: FC = (props) => (
             sx={{ mt: 1 }}
             variant="caption"
           >
-            © 2022 JRTEC.
+            2022
           </Typography>
         </Grid>
       </Grid>
@@ -59,7 +59,7 @@ const Footer: FC = (props) => (
         color="textSecondary"
         variant="caption"
       >
-        Todos los derechos reservados.
+        MIT license
       </Typography>
     </Container>
   </Box>

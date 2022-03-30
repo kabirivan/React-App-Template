@@ -10,14 +10,13 @@ import {
   Link,
   Typography
 } from '@mui/material';
-import LoginJWT from 'src/components/LoginJWT'
+import LoginJWT from 'src/components/LoginJWT';
 
 const platformIcons = {
   JWT: '/static/logo.png'
 };
 
 const Login: FC = () => {
-
   return (
     <>
       <Helmet>
@@ -77,7 +76,7 @@ const Login: FC = () => {
                 >
                   <img
                     alt="Auth platform"
-                    src={platformIcons['JWT']}
+                    src={platformIcons.JWT}
                   />
                 </Box>
               </Box>

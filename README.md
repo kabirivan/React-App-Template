@@ -1,78 +1,105 @@
-# Getting Started with Create React App
+# Basic structure for a React App using CRAÅ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a project template which uses and already has the following packages configured:
 
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [react-router-dom v6](https://reactrouter.com/) 
+- [RTK-query](https://redux-toolkit.js.org/tutorials/rtk-query)
+- [MUI5](https://mui.com/getting-started/installation/)
+- [Formik](https://formik.org/)
+- [Yup](https://github.com/jquense/yup)
+- [Redux-persist](https://github.com/rt2zz/redux-persist#readme)
+- [redux-persist-transform-encrypt](https://github.com/maxdeviant/redux-persist-transform-encrypt)
+- [camelcase-keys](https://github.com/sindresorhus/camelcase-keys)
+- [camelcase-keys](https://github.com/bendrucker/snakecase-keys)
 
-## Installation
-### To start a new Create React App project with TypeScript, you can run:
-
-`yarn create react-app my-app --template typescript`
-
-### The official Redux+TS template for Create React App.
-
-`yarn create react-app my-app --template redux-typescript`
-
-### Add Redux 
-
-The Redux Toolkit package is intended to be the standard way to write Redux logic. It was originally created to help address three common concerns about Redux:
-
-- "Configuring a Redux store is too complicated"
-- "I have to add a lot of packages to get Redux to do anything useful"
-- "Redux requires too much boilerplate code"
-
-`yarn add react-redux`
-`yarn add @reduxjs/toolkit`
-
-### Add MUI
-
-Install MUI, the world's most popular React UI framework.
-
-`yarn add @mui/material @emotion/react @emotion/styled`
+This projects also uses a middleware on RTK-query to connect a React application with a snake case python backend.
 
 
-### Add React Router
-To add React Router to an existing project, the first thing you should do is install the necessary dependencies with the tool of your choice:
-`yarn add react-router-dom@6`
+# Clone the project
 
-## Available Scripts
+```sh
+git clone https://github.com/kabirivan/React-App-Template
+```
 
-In the project directory, you can run:
+## Setup
+### Requirements
+Node > 14
 
-### `yarn start`
+### Set environment variables
 
-Runs the app in the development mode.\
+Create an **.env.development** and **.env.production** files on root folder and copy the content from **.env.example**. Feel free to change it according to your own configuration for development and production.
+
+### Install packages
+
+On the root folder run:
+
+```sh
+yarn install
+```
+
+### Start the project on development mode 
+In this mode the app reads and uses the **.env.development** environment variables
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```sh
+yarn start:development
+```
 
-### `yarn test`
+### Start the project on production mode 
+In this mode the app reads and uses the **.env.production** environment variables
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+```sh
+yarn start:production
+```
+
+### Test the code
+
+```sh
+yarn test
+```
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Run a static code analisys
+
+In order to run more sophisticated static analysis, you can follow the instructions on [this post](https://medium.com/jrtec/static-analysis-using-sonarqube-in-a-react-webapp-dd4b335d6062) for more information.
+
+### Create a production bundle
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Your app is ready to be deployed! It uses .env.production credentials
+
+```sh
+yarn build
+```
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## TODO List:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [x] Add redux toolkit setup
+- [x] Add encrypt storage
+- [x] Add JWT authentication
+- [x] Add RTK-Query for data fetching
+- [x] camelcase-keys and snakecase-keys middlewares
+- [x] Add Redux persist with encryption for storage
+- [x] Add Formik form example
+- [x] Add MUI5
+- [x] Add eslint
+- [x] Add sonarqube for static code analysis
+- [ ] Add a moment example
+- [ ] Add a Formik example with Yup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+PR are welcome ❤️
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- This project is licensed under the terms of the **[MIT license](LICENSE)**
