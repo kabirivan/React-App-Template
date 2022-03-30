@@ -1,4 +1,4 @@
-# Basic structure for a React App using CRAÅ
+# Basic structure for a React App using CRA
 
 This is a project template which uses and already has the following packages configured:
 
@@ -11,10 +11,11 @@ This is a project template which uses and already has the following packages con
 - [Redux-persist](https://github.com/rt2zz/redux-persist#readme)
 - [redux-persist-transform-encrypt](https://github.com/maxdeviant/redux-persist-transform-encrypt)
 - [camelcase-keys](https://github.com/sindresorhus/camelcase-keys)
-- [camelcase-keys](https://github.com/bendrucker/snakecase-keys)
+- [snakecase-keys](https://github.com/bendrucker/snakecase-keys)
 
 This projects also uses a middleware on RTK-query to connect a React application with a snake case python backend.
 
+[Live Demo](https://react-app-template-jrtec.web.app/home)
 
 # Clone the project
 
@@ -24,7 +25,7 @@ git clone https://github.com/kabirivan/React-App-Template
 
 ## Setup
 ### Requirements
-Node > 14
+Node >= 12
 
 ### Set environment variables
 
@@ -80,6 +81,31 @@ yarn build
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+## Preview
+  
+<p align="center">
+  <img src="public/static/preview.png" align="center"/>
+</p>
+
+
+### Firebase CI/CD using github actions
+
+You can edit the workflow on **.github/workflows/main.yml**
+
+The following secrets should be configured on github. It uses [borales/actions-yarn@v2.3.0](https://github.com/Borales/actions-yarn), [w9jds/firebase-action@master](https://github.com/w9jds/firebase-action)  and [act10ns/slack@v1](https://github.com/act10ns/slack).
+
+```sh
+REACT_APP_BACKEND_ENDPOINT
+REACT_APP_ENCRYPT_STORAGE
+REACT_APP_REDUX_SECRET_KEY
+REACT_APP_JWT_SECRET
+PORT
+SLACK_WEBHOOK_URL
+FIREBASE_TOKEN
+```
+
+You can check [here](https://www.youtube.com/watch?v=WuWsg0Ldess&ab_channel=MerowareInstance) how to configure secrets on github account
+
 
 ## TODO List:
 
@@ -93,6 +119,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [x] Add MUI5
 - [x] Add eslint
 - [x] Add sonarqube for static code analysis
+- [x] Github action for CI/CD on firebase
 - [ ] Add a moment example
 - [ ] Add a Formik example with Yup
 
