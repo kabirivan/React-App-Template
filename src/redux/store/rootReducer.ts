@@ -7,6 +7,8 @@ const appReducer = combineReducers({
   [pokemonApi.reducerPath]: pokemonApi.reducer,
 });
 
+export type AppReducer = ReturnType<typeof appReducer>;
+
 const rootReducer = (state, action) => {
   if (action.type === 'RESET_APP') {
     state = undefined;
