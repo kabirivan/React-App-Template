@@ -54,7 +54,7 @@ type Action =
 
 const userData = {
   id: '5e86809283e28b96d2d38537',
-  email: 'demo@devias.io',
+  email: 'demo@example.io',
   firstName: 'Xavier',
   lastName: 'Aguas',
   password: 'Password123!',

@@ -4,7 +4,7 @@ import type { Action } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import { encryptTransform } from 'redux-persist-transform-encrypt';
 import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux';
-import rootReducer from './rootReducer';
+import rootReducer, { AppReducer } from './rootReducer';
 import thunk from 'redux-thunk';
 import { pokemonApi } from 'src/services/pokemonService';
 
@@ -38,7 +38,7 @@ const persistConfig = {
   whiteList: []
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer<AppReducer>(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
