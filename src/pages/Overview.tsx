@@ -1,10 +1,12 @@
 import type { FC } from "react";
-import { Helmet } from "react-helmet-async";
 import { Box, Container, Divider } from "@mui/material";
-import "./Styles.css";
-import CounterView from "../components/counter/CounterView";
+import { Helmet } from "react-helmet-async";
+
 import { LogoReact } from "../components/logo/LogoReact";
 import { PokemonOverview } from "../components/pokemon/PokemonOverview";
+import CounterView from "../components/counter/CounterView";
+
+import "./Styles.css";
 
 const Overview: FC = () => {
   return (
