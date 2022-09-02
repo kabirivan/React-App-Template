@@ -15,7 +15,7 @@ export const PokemonOverview = () => {
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
   const { data, isFetching } = useGetPokemonListQuery({
-    limit: 151,
+    limit: 100000,
     // offset: page,
   });
   console.log(limit, page);
@@ -25,6 +25,11 @@ export const PokemonOverview = () => {
       pokemon.name.toLowerCase().includes(query.toLowerCase())
     )
     .slice(page * limit, page * limit + limit);
+
+  const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+    setPage(0);
+  };
 
   // TODO: crear  pagination
   console.log({ pokemons });
@@ -59,7 +64,7 @@ export const PokemonOverview = () => {
           label="Search pokemon"
           variant="outlined"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={onChangeSearch}
         />
       </Box>
       <Box sx={{ my: 4 }}>
@@ -73,7 +78,7 @@ export const PokemonOverview = () => {
           </Grid>
           <TablePagination
             component="div"
-            count={pokemons.length}
+            count={query === "" ? pokemons.length : fileteredPokemons.length}
             onPageChange={handlePageChange}
             onRowsPerPageChange={handleLimitChange}
             page={page}
