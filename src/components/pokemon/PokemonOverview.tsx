@@ -18,7 +18,6 @@ export const PokemonOverview = () => {
     limit: 100000,
     // offset: page,
   });
-  console.log(limit, page);
   const pokemons = data?.results ?? [];
   const fileteredPokemons = pokemons
     .filter((pokemon) =>
@@ -26,13 +25,14 @@ export const PokemonOverview = () => {
     )
     .slice(page * limit, page * limit + limit);
 
+  const totalPokemonsByQuery = pokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(query.toLowerCase())
+  ).length;
+
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
     setPage(0);
   };
-
-  // TODO: crear  pagination
-  console.log({ pokemons });
 
   const handleLimitChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setLimit(parseInt(event.target.value, 10));
@@ -78,7 +78,7 @@ export const PokemonOverview = () => {
           </Grid>
           <TablePagination
             component="div"
-            count={query === "" ? pokemons.length : fileteredPokemons.length}
+            count={query === "" ? pokemons.length : totalPokemonsByQuery}
             onPageChange={handlePageChange}
             onRowsPerPageChange={handleLimitChange}
             page={page}
