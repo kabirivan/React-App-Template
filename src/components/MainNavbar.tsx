@@ -11,7 +11,7 @@ interface MainNavbarProps {
 }
 
 const MainNavbar: FC<MainNavbarProps> = (props) => {
-  const { onSidebarMobileOpen } = props;
+  // const { onSidebarMobileOpen } = props;
   const { logout } = useAuth();
   const navigate = useNavigate();
 

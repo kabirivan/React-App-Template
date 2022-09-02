@@ -10,7 +10,8 @@
   },
   "extends": [
     "airbnb-base",
-    "airbnb-typescript"
+    "airbnb-typescript",
+    "eslint-config-prettier"
   ],
   "rules": {
     "linebreak-style": 0,

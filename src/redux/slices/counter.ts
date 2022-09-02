@@ -42,4 +42,8 @@ export const incrementByAmountAction = (value: number): AppThunk => async (dispa
   dispatch(slice.actions.incrementByAmount(value));
 };
 
+export const decrementByAmountAction = (value: number): AppThunk => async (dispatch) : Promise<void> => {
+  dispatch(slice.actions.incrementByAmount(value));
+};
+
 export default slice;
