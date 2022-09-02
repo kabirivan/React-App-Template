@@ -43,6 +43,13 @@ const CounterView: FC = () => {
             value={value}
             onChange={onChangeTextField}
             type="number"
+            sx={{
+              "input::-webkit-inner-spin-button": {
+                WebkitAppearance: "none",
+                margin: 0,
+              },
+              "input::-webkit-outer-spin-button": {},
+            }}
           />
         </Box>
         <Box
